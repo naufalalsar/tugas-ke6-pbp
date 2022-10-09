@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "title": "Fight Club",
+            "release_date": "November 11, 1999 (Germany)",
+            "watched": "No",
+            "rating": 4.6,
+            "review": "I see in the fight club the strongest and smartest men who've ever lived. I see all this potential and I see squandering. God damn it, an entire generation pumping gas, waiting tables, slaves with white collars, advertising has us chasing cars and clothes, working jobs we hate so we can buy shit we don't need. We're the middle children of the history man, no purpose or place, we have no Great war, no Great depression, our great war is a spiritual war, our great depression is our lives, we've been all raised by television to believe that one day we'd all be millionaires and movie gods and rock stars, but we won't and we're slowly learning that fact. and we're very very pissed off - Tyler Durden"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "title": "Akira",
+            "release_date": "July 16, 1988 (Japan)",
+            "watched": "Yes",
+            "rating": 4.7,
+            "review": "Boku wa tetsuo"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "title": "Se7en",
+            "release_date": "September 22, 1995 (USA)",
+            "watched": "No",
+            "rating": 4.5,
+            "review": "NO!, what's in the box?"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "title": "The Dark Knight",
+            "release_date": "July 18, 2008 (Indonesia)",
+            "watched": "No",
+            "rating": 4.8,
+            "review": "I am an agent of chaos"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "title": "Joker",
+            "release_date": "October 2, 2019 (Indonesia)",
+            "watched": "Yes",
+            "rating": 4.9,
+            "review": "Blew Murray's mind"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "title": "American Psycho",
+            "release_date": "April 14, 2000 (USA)",
+            "watched": "Yes",
+            "rating": 4.7,
+            "review": "Do you know that i am utterly insane?"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "title": "Whiplash",
+            "release_date": "October 10, 2014 (USA)",
+            "watched": "No",
+            "rating": 4.6,
+            "review": "Not quite my tempo"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "title": "The Batman",
+            "release_date": "March 2, 2022 (Indonesia)",
+            "watched": "Yes",
+            "rating": 4.5,
+            "review": "Fear is a tool"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "title": "Interstellar",
+            "release_date": "November 6, 2014 (Indonesia)",
+            "watched": "Yes",
+            "rating": 4.8,
+            "review": "Love transcend dimension"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "title": "Everything Everywhere All at Once",
+            "release_date": "June 22, 2022 (Indonesia)",
+            "watched": "Yes",
+            "rating": 5,
+            "review": "Nothing's really matter"
+        }
+    }
+]

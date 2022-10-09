@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>To Do List</title>
+{% endblock meta %}
+
+{% block content %}
+
+{% load static %}  
+
+{% csrf_token %}
+
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="navbar-brand">
+                <a class="nav-link text-light">Hi, {{nama}}</a>
+            </li>
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Create Task
+              </button>
+            </li>
+        </ul>
+    </div>
+    <div class="mr-auto">
+        <ul class="navbar-nav mx-3">
+            <li class="navbar-brand">
+            <button class="btn btn-light float-right" type="button"><a href="{% url 'todolist:logout' %}" class="text-decoration-none text-dark">Logout</a></button>
+            </li>
+    </div>
+</nav>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create Task</h5>
+        </div>
+        <div class="modal-body">
+            <div>
+        
+                <a class="text-decoration-none text-dark">Title</a>
+                <input type="text" id="todo" name="todo" placeholder="Title." class="form-control">
+            
+                    
+                <a class="text-decoration-none text-dark">Description</a>
+                <input type="text" id="description" name="description" placeholder="Description." class="form-control">
+
+                <div class="div d-flex justify-content-center mt-3">
+                <button class="btn btn-success"  onclick="update()">Create</button>
+                </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+
+<br></br>
+
+{% comment %} 
+
+{% for todolist in list_todo %}
+<div class="card m-2" style="width: 18rem;">
+    <div class="card-body" id="title">
+      <h5 class="card-title">{{todolist.title}}</h5>
+      <p class="card-text">{{todolist.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{todolist.date}}</li>
+      {% if todolist.is_finished == False %}
+      <li class="list-group-item">Belum Selesai</li>
+      {% else %}
+      <li class="list-group-item">Selesai</li>
+      {% endif %}
+    </ul>
+    <div class="card-body">
+        <button class="btn btn-dark" type="button"><a href="{% url 'todolist:checklist' todolist.pk %}" class="text-decoration-none text-light">Selesai?</a></button>
+        <button class="btn btn-dark" type="button"><a href="{% url 'todolist:hapus' todolist.pk %}" class="text-decoration-none text-light">Hapus</a></button>
+    </div>
+  </div>
+  {% endfor %}
+
+<table>
+    <tr>
+    <th>Judul To do</th>
+    <th>Tanggal</th>
+    <th>Deskripsi</th>
+    <th>Selesai/Belum Selesai</th>
+    <th>Mengubah Status To Do</th>
+    <th>Hapus</th>
+    </tr>
+
+    {% for todolist in list_todo %}
+    <tr>
+        <th>{{todolist.title}}</th>
+        <th>{{todolist.date}}</th>
+        <th>{{todolist.description}}</th>
+        {% if todolist.is_finished == False %}
+        <th>Belum Selesai</th>
+        {% else %}
+        <th>Selesai</th>
+        {% endif %}
+        <th><a href="{% url 'todolist:checklist' todolist.pk %}"><button>Check</button></th>
+        <th><a href="{% url 'todolist:hapus' todolist.pk %}"><button>Delete</button></th>
+        
+    </tr>
+{% endfor %}
+</table>
+
+{% endcomment %}
+
+<div class="mx-3 d-flex flex-row flex-wrap justify-content-center" id="card">
+    
+</div>
+  
+  <br></br>
+
+
+
+  <br></br>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+  
+  function update(){
+        $.ajax({
+          url: "/todolist/",
+          method: "POST",
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken")
+          },
+          data:{
+            todo : $('#todo').val(),
+            description : $("#description").val(),
+          },
+        success: function(){
+          show();
+        },
+        error: function(){
+          aler("error");
+        }
+      })}
+  
+    function show() {
+      $.get("/todolist/json", function(data) {
+        $("#card").html("")
+            for(let i = 0; i < data.length ; i++){
+                    $("#card").append(`<div class="card m-2" style="width: 18rem;">
+        <div class="card-body" id="title">
+        <h5 class="card-title">${data[i].fields.title}</h5>
+        <p class="card-text">${data[i].fields.description}</p>
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item">${data[i].fields.date}</li>
+        </ul>`)
+              }
+          });
+    }
+      $(document).ready(function(){
+          show();
+      });
+  
+      function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  
+      
+      
+      </script>
+  
+
+{% endblock content %}

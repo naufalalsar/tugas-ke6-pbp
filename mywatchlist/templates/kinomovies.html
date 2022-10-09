@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1>WATCHLIST</h1>
+
+  <h5>Name: </h5>
+  <p>{{nama}}</p>
+
+  <h5>Student ID: </h5>
+  <p>{{npm}}</p>
+
+  <h5>Message for you!</h5>
+  <p>{{message}}</p>
+
+    {% for movie in watchlist %}
+    <ul>
+        <li>{{movie.title}}</li>
+          <p>Watched : {{movie.watched}} 
+            <br> 
+            Rating : {{movie.rating}}/5
+            <br>
+            Release Date : {{movie.release_date}}
+            <br>
+            Review :
+            <br>
+            {{movie.review}}
+        </p>
+      </ul>  
+      
+    {% endfor %}
+
+ {% endblock content %}
